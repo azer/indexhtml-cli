@@ -10,7 +10,6 @@ $ npm install indexhtml-cli
 
 ## Usage
 
-```js
 ```bash
 $ echo "<h1>yo</h1>" > yo.html
 $ indexhtml "hello world" yo.html foo.js bar.css qux.css > index.html
