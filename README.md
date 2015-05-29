@@ -13,6 +13,7 @@ $ npm install indexhtml-cli
 ```bash
 $ echo "<h1>yo</h1>" > yo.html
 $ indexhtml "hello world" yo.html foo.js bar.css qux.css > index.html
+$ cat head.html meow.html foot.html | indexhtml "meow" foo.js bar.css > index.html
 ```
 
 Outputs:
@@ -32,4 +33,11 @@ Outputs:
 </body>
 </html>
 ```
+
+When parsing `stdin`, all extra `--parameters` are passed to [raw-body](https://github.com/stream-utils/raw-body) as `options`.
+
+Example:
+
+```bash
+cat odyssey.html | indexhtml "Οδύσσεια" --encoding=greek > index.html
 ```
