@@ -1,9 +1,11 @@
 #!/usr/bin/env node
 
 var command = require("new-command")();
-var generate = require("indexhtml");
+var parse = require('raw-body');
+var html = require("indexhtml");
 var read = require("fs").readFileSync;
 var path = require("path");
+var stdin = process.stdin;
 
 create(command._);
 
@@ -24,5 +26,15 @@ function create (params) {
     throw new Error('Unrecognized parameter: ' + ext);
   });
 
-  console.log(generate(options));
+  if (options.content) generate(options)();
+  else parse(stdin, command, generate(options));
+}
+
+function generate(options) {
+  return function(err, res) {
+    if (err) throw err;
+    if (res) options.content = res.toString();
+
+    console.log(html(options));
+  };
 }
