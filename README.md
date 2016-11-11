@@ -5,7 +5,7 @@ Generate an [index.html](http://github.com/azer/indexhtml) file that includes sp
 ## Install
 
 ```bash
-$ npm install indexhtml-cli
+$ npm install azer/indexhtml-cli
 ```
 
 ## Usage
